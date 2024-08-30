@@ -25,8 +25,22 @@ const generateDomain = () => {
   let noun = getRandomElement(nouns);
   let domain = getRandomElement(domains);
 
-  document.getElementById("generateDomain").innerText =
-    pronoun + adj + noun + domain;
+  return pronoun + adj + noun + domain;
 };
 
-document.querySelector(".btn").addEventListener("click", generateDomain);
+const generateButton = document.querySelector(".btn");
+
+function generateTenDomain() {
+  const randomDomain = [];
+  for (let i = 0; i < 10; i++) {
+    randomDomain.push(generateDomain());
+  }
+  return randomDomain;
+}
+
+generateButton.addEventListener("click", () => {
+  const domains = generateTenDomain();
+  const listItems = domains.map(domain => `<li>${domain}</li>`).join("");
+
+  document.getElementById("generateDomain").innerHTML = `<ul>${listItems}</ul>`;
+});
