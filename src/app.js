@@ -40,7 +40,11 @@ function generateTenDomain() {
 
 generateButton.addEventListener("click", () => {
   const domains = generateTenDomain();
-  const listItems = domains.map(domain => `<li>${domain}</li>`).join("");
+  const listItems = domains
+    .map(domain => `<li class="list-group-item">${domain}</li>`)
+    .join("");
 
-  document.getElementById("generateDomain").innerHTML = `<ul>${listItems}</ul>`;
+  document.getElementById(
+    "generateDomain"
+  ).innerHTML = `<ul class="list-group">${listItems}</ul>`;
 });
